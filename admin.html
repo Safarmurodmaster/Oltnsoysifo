@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oltinsoy Xususiy Sanatoriyasi - Admin Panel</title>
+    <link rel="stylesheet" href="admin-styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Admin Login Section -->
+    <div id="admin-login-section" class="admin-login-section">
+        <div class="login-container">
+            <div class="login-header">
+                <img src="images/logo.png" alt="Logo" class="login-logo">
+                <h2>Admin Panel</h2>
+            </div>
+            <form id="admin-login-form" class="login-form">
+                <div class="form-group">
+                    <label for="admin-login-password">Parol:</label>
+                    <input type="password" id="admin-login-password" required>
+                </div>
+                <button type="submit" class="login-btn">Kirish</button>
+                <div id="admin-login-message" class="login-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Password Change Section -->
+    <div id="admin-password-change-section" class="password-change-section" style="display: none;">
+        <div class="password-change-container">
+            <h3>Parolni o'zgartirish</h3>
+            <form id="admin-password-change-form" class="password-change-form">
+                <div class="form-group">
+                    <label for="old-password">Joriy parol:</label>
+                    <input type="password" id="old-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-password">Yangi parol:</label>
+                    <input type="password" id="new-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Yangi parolni tasdiqlang:</label>
+                    <input type="password" id="confirm-password" required>
+                </div>
+                <button type="submit" class="password-change-submit-btn">Parolni o'zgartirish</button>
+                <div id="admin-password-change-message" class="password-change-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Admin Container -->
+    <div class="admin-container" style="display: none;">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <img src="images/logo.png" alt="Logo" class="header-logo">
+                    <h1>Oltinsoy Xususiy Sanatoriyasi</h1>
+                </div>
+                <div class="header-right">
+                    <span class="admin-info">Admin Panel</span>
+                    <button id="admin-logout-btn" class="logout-btn">Chiqish</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="admin-main">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav>
+                    <ul>
+                        <li><a href="#" data-section="dashboard" class="active">Dashboard</a></li>
+                        <li><a href="#" data-section="accounting">Buxgalteriya</a></li>
+                        <li><a href="#" data-section="bookings">Xona band qilish</a></li>
+                        <li><a href="#" data-section="questions">Savollar</a></li>
+                        <li><a href="#" data-section="settings">Sozlamalar</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <main class="content">
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="admin-section active">
+                    <div class="section-header">
+                        <h2>Dashboard</h2>
+                    </div>
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="card-title">Kunlik tushumlar</div>
+                            <div class="card-value" id="dashboard-today-income">0 so'm</div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="card-title">Kunlik xarajatlar</div>
+                            <div class="card-value" id="dashboard-today-expense">0 so'm</div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="card-title">Kunlik sof daromad</div>
+                            <div class="card-value" id="dashboard-today-net">0 so'm</div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="card-title">Faol xona band qilishlar</div>
+                            <div class="card-value" id="dashboard-active-bookings">0</div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="card-title">Jami daromad</div>
+                            <div class="card-value" id="dashboard-total-income">0 so'm</div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="card-title">Jami xarajat</div>
+                            <div class="card-value" id="dashboard-total-expense">0 so'm</div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="card-title">Sof daromad</div>
+                            <div class="card-value" id="dashboard-net-income">0 so'm</div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="card-title">Jami band qilishlar</div>
+                            <div class="card-value" id="dashboard-total-bookings">0</div>
+                        </div>
+                        <div class="dashboard-card">
+                            <div class="card-title">Jami savollar</div>
+                            <div class="card-value" id="dashboard-total-questions">0</div>
+                        </div>
+                    </div>
+                    <div class="container1">
+                      
+                        <div id="visit-stats">
+                            <h3>Tashriflar statistikasi</h3>
+                            <div id="region-stats"></div>
+                            <div id="device-stats"></div>
+                            <div id="daily-stats"></div>
+                            <div id="monthly-stats"></div>
+                            <div id="yearly-stats"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Accounting Section -->
+                <section id="accounting" class="admin-section">
+                    <div class="section-header">
+                        <h2>Buxgalteriya</h2>
+                    </div>
+                    
+                    <!-- Balance Display -->
+                    <div id="accounting-balance" class="balance-display"></div>
+                    
+                    <!-- Statistics -->
+                    <div class="statistics-grid">
+                        <div class="stat-card">
+                            <h3>Kunlik hisobot</h3>
+                            <div id="daily-summary"></div>
+                            <div id="daily-net"></div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Haftalik hisobot</h3>
+                            <div id="weekly-summary"></div>
+                            <div id="weekly-net"></div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Oylik hisobot</h3>
+                            <div id="monthly-summary"></div>
+                            <div id="monthly-net"></div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Yillik hisobot</h3>
+                            <div id="yearly-summary"></div>
+                            <div id="yearly-net"></div>
+                        </div>
+                    </div>
+
+                    <!-- Add Accounting Form -->
+                    <div class="form-section">
+                        <h3>Yangi ma'lumot qo'shish</h3>
+                        <form id="add-accounting-form" class="admin-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="accounting-amount">Summa:</label>
+                                    <input type="number" id="accounting-amount" name="amount" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="accounting-type">Turi:</label>
+                                    <select id="accounting-type" name="type" required>
+                                        <option value="">Tanlang</option>
+                                        <option value="income">Daromad</option>
+                                        <option value="expense">Xarajat</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="accounting-source">Manba/Kategoriya:</label>
+                                    <input type="text" id="accounting-source" name="source">
+                                </div>
+                                <div class="form-group">
+                                    <label for="accounting-date">Sana:</label>
+                                    <input type="date" id="accounting-date" name="date">
+                                </div>
+                                <div class="form-group">
+                                    <label for="accounting-note">Izoh:</label>
+                                    <textarea id="accounting-note" name="note"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="submit-btn">Qo'shish</button>
+                        </form>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="filters-section">
+                        <h3>Filtrlash</h3>
+                        <div class="filter-controls">
+                            <div class="form-group">
+                                <label for="filter-date">Sana:</label>
+                                <input type="date" id="filter-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-type">Turi:</label>
+                                <select id="filter-type">
+                                    <option value="">Barchasi</option>
+                                    <option value="income">Daromad</option>
+                                    <option value="expense">Xarajat</option>
+                                </select>
+                            </div>
+                            <button id="clear-filter" class="clear-btn">Filterni tozalash</button>
+                        </div>
+                    </div>
+
+                    <!-- Export Buttons -->
+                    <div class="export-section">
+                        <h3>Eksport</h3>
+                        <div class="export-buttons">
+                            <button id="export-excel" class="export-btn excel-btn">Excel ga eksport</button>
+                            <button id="export-pdf" class="export-btn pdf-btn">PDF ga eksport</button>
+                        </div>
+                    </div>
+
+                    <!-- Accounting Table -->
+                    <div class="table-section">
+                        <h3>Buxgalteriya jadvali</h3>
+                        <table id="accounting-table" class="admin-table" border="1">
+                            <thead>
+                                <tr>
+                                    <th>№</th>
+                                    <th>Sana</th>
+                                    <th>Summa</th>
+                                    <th>Turi</th>
+                                    <th>Manba/Kategoriya</th>
+                                    <th>Izoh</th>
+                                    <th>Amallar</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div id="accounting-summary" class="accounting-summary" style="margin-top:24px;"></div>
+
+                    <!-- Accounting Edit Modal -->
+                    <div id="accounting-edit-modal" class="modal" style="display:none;">
+                        <div class="modal-content">
+                            <span class="close" id="close-accounting-edit-modal">&times;</span>
+                            <h3>Buxgalteriya ma'lumotini tahrirlash</h3>
+                            <form id="accounting-edit-form">
+                                <div class="form-row">
+                                    <div class="form-group"><label>Summa:</label><input type="number" id="edit-accounting-amount" name="amount" required></div>
+                                    <div class="form-group"><label>Turi:</label>
+                                        <select id="edit-accounting-type" name="type" required>
+                                            <option value="income">Daromad</option>
+                                            <option value="expense">Xarajat</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group"><label>Manba/Kategoriya:</label><input type="text" id="edit-accounting-source" name="source"></div>
+                                    <div class="form-group"><label>Sana:</label><input type="date" id="edit-accounting-date" name="date"></div>
+                                    <div class="form-group"><label>Izoh:</label><textarea id="edit-accounting-note" name="note"></textarea></div>
+                                </div>
+                                <div class="modal-actions">
+                                    <button type="submit" class="submit-btn">Saqlash</button>
+                                    <button type="button" class="clear-btn" id="cancel-accounting-edit">Bekor qilish</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Reports -->
+                    <div class="monthly-reports-section">
+                        <h3>Oylik hisobotlar</h3>
+                        <div class="monthly-filter">
+                            <select id="month-filter">
+                                <option value="">Barcha oylar</option>
+                                <option value="1">Yanvar</option>
+                                <option value="2">Fevral</option>
+                                <option value="3">Mart</option>
+                                <option value="4">Aprel</option>
+                                <option value="5">May</option>
+                                <option value="6">Iyun</option>
+                                <option value="7">Iyul</option>
+                                <option value="8">Avgust</option>
+                                <option value="9">Sentyabr</option>
+                                <option value="10">Oktyabr</option>
+                                <option value="11">Noyabr</option>
+                                <option value="12">Dekabr</option>
+                            </select>
+                            <button id="apply-month-filter" class="filter-btn">Qo'llash</button>
+                            <button id="clear-month-filter" class="clear-btn">Tozalash</button>
+                        </div>
+                        <div id="monthly-tables"></div>
+                        <div class="monthly-export">
+                            <button id="export-monthly-excel" class="export-btn excel-btn">Oylik Excel</button>
+                            <button id="export-monthly-pdf" class="export-btn pdf-btn">Oylik PDF</button>
+                        </div>
+                    </div>
+
+                    <div class="accounting-charts">
+                        <canvas id="incomeChart" height="120"></canvas>
+                        <canvas id="expenseChart" height="120"></canvas>
+                        <canvas id="netChart" height="120"></canvas>
+                    </div>
+                </section>
+
+                <!-- Bookings Section -->
+                <section id="bookings" class="admin-section">
+                    <div class="section-header">
+                        <h2>Xona band qilish</h2>
+                    </div>
+
+                    <!-- Add Booking Form -->
+                    <div class="form-section">
+                        <h3>Yangi xona band qilish qo'shish</h3>
+                        <form id="add-booking-form" class="admin-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="booking-room-number">Xona raqami:</label>
+                                    <input type="text" id="booking-room-number" name="roomNumber" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-check-in">Kirish sanasi:</label>
+                                    <input type="date" id="booking-check-in" name="checkInDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-check-out">Chiqish sanasi:</label>
+                                    <input type="date" id="booking-check-out" name="checkOutDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-room-capacity">Sig'imi:</label>
+                                    <input type="number" id="booking-room-capacity" name="roomCapacity">
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-room-type">Xona turi:</label>
+                                    <select id="booking-room-type" name="roomType">
+                                        <option value="">Tanlang</option>
+                                        <option value="standart">Standart</option>
+                                        <option value="oilaviy">Oilaviy</option>
+                                        <option value="lyuks">Lyuks</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-client-name">Mijoz ismi:</label>
+                                    <input type="text" id="booking-client-name" name="clientName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-phone">Telefon:</label>
+                                    <input type="tel" id="booking-phone" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-address">Manzil:</label>
+                                    <input type="text" id="booking-address" name="address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-passport">Passport:</label>
+                                    <input type="text" id="booking-passport" name="passport">
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-companions">Hamrohlar:</label>
+                                    <input type="text" id="booking-companions" name="companions">
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-amount">Summa:</label>
+                                    <input type="number" id="booking-amount" name="amount">
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-payment-method">To'lov usuli:</label>
+                                    <select id="booking-payment-method" name="paymentMethod">
+                                        <option value="">Tanlang</option>
+                                        <option value="naqd">Naqd</option>
+                                        <option value="karta">Karta</option>
+                                        <option value="bank">Bank o'tkazmasi</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-status">Holat:</label>
+                                    <select id="booking-status" name="status">
+                                        <option value="pending">Kutilmoqda</option>
+                                        <option value="confirmed">Tasdiqlangan</option>
+                                        <option value="cancelled">Bekor qilingan</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="submit-btn">Qo'shish</button>
+                        </form>
+                    </div>
+
+                    <!-- Booking Filters -->
+                    <div class="filters-section">
+                        <h3>Filtrlash</h3>
+                        <div class="filter-controls">
+                            <div class="form-group">
+                                <label for="booking-filter-date">Sana:</label>
+                                <input type="date" id="booking-filter-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-filter-status">Holat:</label>
+                                <select id="booking-filter-status">
+                                    <option value="">Barchasi</option>
+                                    <option value="pending">Kutilmoqda</option>
+                                    <option value="confirmed">Tasdiqlangan</option>
+                                    <option value="cancelled">Bekor qilingan</option>
+                                </select>
+                            </div>
+                            <button id="booking-clear-filter" class="clear-btn">Filterni tozalash</button>
+                        </div>
+                    </div>
+
+                    <!-- Booking Export -->
+                    <div class="export-section">
+                        <h3>Eksport</h3>
+                        <div class="export-buttons">
+                            <button id="booking-export-excel" class="export-btn excel-btn">Excel ga eksport</button>
+                            <button id="booking-export-pdf" class="export-btn pdf-btn">PDF ga eksport</button>
+                        </div>
+                    </div>
+
+                    <!-- Booking Table -->
+                    <div class="table-section">
+                        <h3>Xona band qilish jadvali</h3>
+                        <table id="booking-table" class="admin-table" border="1">
+                            <thead>
+                                <tr>
+                                    <th>№</th>
+                                    <th>Kirish sanasi</th>
+                                    <th>Chiqish sanasi</th>
+                                    <th>Xona raqami</th>
+                                    <th>Sig'imi</th>
+                                    <th>Xona turi</th>
+                                    <th>Mijoz ismi</th>
+                                    <th>Telefon</th>
+                                    <th>Manzil</th>
+                                    <th>Passport</th>
+                                    <th>Hamrohlar</th>
+                                    <th>Summa</th>
+                                    <th>To'lov usuli</th>
+                                    <th>Holat</th>
+                                    <th>Amallar</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <!-- Booking Edit Modal -->
+                    <div id="booking-edit-modal" class="modal" style="display:none;">
+                        <div class="modal-content">
+                            <span class="close" id="close-booking-edit-modal">&times;</span>
+                            <h3>Band qilishni tahrirlash</h3>
+                            <form id="booking-edit-form">
+                                <div class="form-row">
+                                    <div class="form-group"><label>Xona raqami:</label><input type="text" id="edit-roomNumber" name="roomNumber" required></div>
+                                    <div class="form-group"><label>Kirish sanasi:</label><input type="date" id="edit-checkInDate" name="checkInDate" required></div>
+                                    <div class="form-group"><label>Chiqish sanasi:</label><input type="date" id="edit-checkOutDate" name="checkOutDate" required></div>
+                                    <div class="form-group"><label>Sig'imi:</label><input type="text" id="edit-roomCapacity" name="roomCapacity"></div>
+                                    <div class="form-group"><label>Xona turi:</label><input type="text" id="edit-roomType" name="roomType"></div>
+                                    <div class="form-group"><label>Mijoz ismi:</label><input type="text" id="edit-clientName" name="clientName" required></div>
+                                    <div class="form-group"><label>Telefon:</label><input type="text" id="edit-phone" name="phone"></div>
+                                    <div class="form-group"><label>Manzil:</label><input type="text" id="edit-address" name="address"></div>
+                                    <div class="form-group"><label>Passport:</label><input type="text" id="edit-passport" name="passport"></div>
+                                    <div class="form-group"><label>Hamrohlar:</label><input type="text" id="edit-companions" name="companions"></div>
+                                    <div class="form-group"><label>Summa:</label><input type="number" id="edit-amount" name="amount"></div>
+                                    <div class="form-group"><label>To'lov usuli:</label><input type="text" id="edit-paymentMethod" name="paymentMethod"></div>
+                                    <div class="form-group"><label>Holat:</label>
+                                        <select id="edit-status" name="status">
+                                            <option value="pending">Kutilmoqda</option>
+                                            <option value="confirmed">Tasdiqlangan</option>
+                                            <option value="cancelled">Bekor qilingan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="modal-actions">
+                                    <button type="submit" class="submit-btn">Saqlash</button>
+                                    <button type="button" class="clear-btn" id="cancel-booking-edit">Bekor qilish</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Room Pricing -->
+                    <!-- Xona narxlari bo'limi olib tashlandi -->
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings" class="admin-section">
+                    <div class="section-header">
+                        <h2>Sozlamalar</h2>
+                    </div>
+                    
+                    <!-- Password Change -->
+                    <div class="settings-section">
+                        <h3>Parolni o'zgartirish</h3>
+                        <form id="admin-password-change-form" class="admin-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="old-password">Joriy parol:</label>
+                                    <input type="password" id="old-password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-password">Yangi parol:</label>
+                                    <input type="password" id="new-password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Yangi parolni tasdiqlang:</label>
+                                    <input type="password" id="confirm-password" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="submit-btn">Parolni o'zgartirish</button>
+                            <div id="admin-password-change-message" class="password-change-message"></div>
+                        </form>
+                    </div>
+                    
+                </section>
+
+                <!-- Questions Section -->
+                <section id="questions" class="admin-section">
+                    <div class="section-header">
+                        <h2>Savollar</h2>
+                    </div>
+                    <div class="export-buttons" style="margin-bottom:20px; text-align:right;">
+                        <button id="export-questions-excel" class="btn btn-secondary">Excel yuklab olish</button>
+                        <button id="export-questions-pdf" class="btn btn-secondary">PDF yuklab olish</button>
+                    </div>
+                    <div id="questions-list">
+                        <p>Yuklanmoqda...</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>

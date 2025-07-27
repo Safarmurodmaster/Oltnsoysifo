@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oltinsoy Xususiy Sanatoriyasi - Tabiat Nafosati va Sog'lom Hayot</title>
+    <meta name="description" content="Oltinsoy Xususiy Sanatoriyasi - sog'lik va dam olish uchun ideal joy. Tabiiy go'zallik va zamonaviy tibbiy xizmatlar.">
+    <meta name="keywords" content="sanatoriya, Oltinsoy, davolash, dam olish, sog'liq, kurort, O'zbekiston, tabiat, shifobaxsh">
+    <meta name="author" content="Your Name or Company Name">
+    <meta name="language" content="uz, ru, en, kz">
+
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <div class="bg-fade bg1"></div>
+    <div class="bg-fade bg2"></div>
+    <div class="bg-fade bg3"></div>
+
+    <header class="main-header" id="home">
+        <div class="container">
+            <div class="header-content">
+                            <a href="/" class="logo" aria-label="Oltinsoy Xususiy Sanatoriyasi logo">
+                <img src="images/logo.png.png" alt="Oltinsoy Xususiy Sanatoriyasi Logo">
+                </a>
+                <nav class="main-nav" aria-label="Bosh navigatsiya">
+                    <ul class="nav-menu">
+                        <li class="nav-item"><a href="#home" data-i18n="home">Bosh sahifa</a></li>
+                        <li class="nav-item"><a href="#about" data-i18n="about">Biz haqimizda</a></li>
+                        <li class="nav-item"><a href="#treatments" data-i18n="treatments">Davolash</a></li>
+                        <li class="nav-item"><a href="#rooms" data-i18n="rooms">Xonalar</a></li>
+                        <li class="nav-item"><a href="#gallery" data-i18n="gallery">Galereya</a></li>
+                        <li class="nav-item"><a href="#contact" data-i18n="contact">Aloqa</a></li>
+                        <li class="nav-item"><a href="admin.html" data-i18n="Admin" style="color: #e74c3c; font-weight: bold;">🔐 Admin Panel</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <div class="language-switcher">
+                        <button id="lang-uz">UZ</button>
+                        <button id="lang-ru">RU</button>
+                        <button id="lang-en">EN</button>
+                        <button id="lang-kz">KZ</button>
+                    </div>
+                    <button class="nav-toggle" aria-label="Navigatsiya menyusini ochish/yopish">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 data-i18n="heroTitle">Tabiat Nafosati va Sog'lom Hayot</h1>
+                <p data-i18n="heroDescription">Oltinsoy Xususiy Sanatoriyasi - bu sizning sog'lig'ingiz va ruhingizni yoshartirish uchun ideal joy. Bizning shifobaxsh muhitimizda tabiiy go'zallik va zamonaviy tibbiy xizmatlar uyg'unlashgan.</p>
+                <div class="hero-actions">
+                    <a href="#about" class="btn" data-i18n="viewMore">Batafsil ko'rish</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section reveal">
+            <div class="container">
+                <h2><span data-i18n="aboutTitle">Biz Haqimizda</span></h2>
+                <p class="section-description" data-i18n="aboutText">Oltinsoy Xususiy Sanatoriyasi noyob tabiiy resurslar va ilg'or tibbiy texnologiyalarni birlashtirgan holda mijozlarimizga eng yuqori sifatli davolash va dam olish xizmatlarini taklif etadi. Bizning mutaxassislarimiz har bir mehmonning shaxsiy ehtiyojlariga e'tibor qaratib, sog'liqni tiklash va farovonlikni ta'minlaydi. Bizning sanatoriyamizda siz toza havo, shifobaxsh suvlar va tinch muhitdan bahramand bo'lishingiz mumkin, bu esa to'liq tiklanishga yordam beradi.</p>
+                <div class="about-grid grid">
+                    <div class="about-item card">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3 data-i18n="aboutFeature1Title">Sog'likni tiklash</h3>
+                        <p data-i18n="aboutFeature1Text">Eng so'nggi tibbiy texnologiyalar yordamida sog'ligingizni tiklang va mustahkamlang.</p>
+                    </div>
+                    <div class="about-item card">
+                        <i class="fas fa-leaf"></i>
+                        <h3 data-i18n="aboutFeature2Title">Tabiiy muhit</h3>
+                        <p data-i18n="aboutFeature2Text">Toza havo, go'zal tabiat va sokin muhitda dam oling.</p>
+                    </div>
+                    <div class="about-item card">
+                        <i class="fas fa-spa"></i>
+                        <h3 data-i18n="aboutFeature3Title">Dam olish va yoshartirish</h3>
+                        <p data-i18n="aboutFeature3Text">Spa-muolajalar va maxsus dasturlar bilan yosharing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sanatoriya manzili xaritada -->
+        <section class="map-section reveal">
+            <div class="container">
+                <h2 data-i18n="mapTitle">Sanatoriya manzili xaritada</h2>
+                <div style="width:100%;max-width:800px;margin:auto;">
+                    <iframe
+                        src="https://www.google.com/maps?q=40.16597,66.01529&hl=uz&z=15&output=embed"
+                        width="100%" height="400" style="border:0; border-radius:12px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="treatments" class="treatments-section bg-light reveal">
+            <div class="container">
+                <h2><span data-i18n="treatmentsTitle">Davolash va muolajalar</span></h2>
+                <p class="section-description" data-i18n="treatmentsDescription"></p>
+                <div class="treatment-grid grid">
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-bath"></i>
+                        <h3 data-i18n="treatmentMineralBathTitle"></h3>
+                        <p data-i18n="treatmentMineralBathDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-hot-tub"></i>
+                        <h3 data-i18n="treatmentParaffinTitle"></h3>
+                        <p data-i18n="treatmentParaffinDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-bolt"></i>
+                        <h3 data-i18n="treatmentElectrophoresisTitle"></h3>
+                        <p data-i18n="treatmentElectrophoresisDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-battery-full"></i>
+                        <h3 data-i18n="treatmentElectronTitle"></h3>
+                        <p data-i18n="treatmentElectronDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-stethoscope"></i>
+                        <h3 data-i18n="treatmentUziTitle"></h3>
+                        <p data-i18n="treatmentUziDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-shower"></i>
+                        <h3 data-i18n="treatmentHydroBathTitle"></h3>
+                        <p data-i18n="treatmentHydroBathDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-bone"></i>
+                        <h3 data-i18n="treatmentSpineTitle"></h3>
+                        <p data-i18n="treatmentSpineDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-hand-sparkles"></i>
+                        <h3 data-i18n="treatmentFractureTherapyTitle"></h3>
+                        <p data-i18n="treatmentFractureTherapyDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3 data-i18n="treatmentFractureLampTitle"></h3>
+                        <p data-i18n="treatmentFractureLampDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-capsules"></i>
+                        <h3 data-i18n="treatmentDarsivalTitle"></h3>
+                        <p data-i18n="treatmentDarsivalDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-syringe"></i>
+                        <h3 data-i18n="treatmentInfogavatsyaTitle"></h3>
+                        <p data-i18n="treatmentInfogavatsyaDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-vial"></i>
+                        <h3 data-i18n="treatmentVB4Title"></h3>
+                        <p data-i18n="treatmentVB4Desc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-hand-paper"></i>
+                        <h3 data-i18n="treatmentPartialMassageTitle"></h3>
+                        <p data-i18n="treatmentPartialMassageDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h3 data-i18n="treatmentPaidTitle"></h3>
+                        <p data-i18n="treatmentPaidDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-brain"></i>
+                        <h3 data-i18n="treatmentEktTitle"></h3>
+                        <p data-i18n="treatmentEktDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-lungs"></i>
+                        <h3 data-i18n="treatmentOzoneTitle"></h3>
+                        <p data-i18n="treatmentOzoneDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-flask"></i>
+                        <h3 data-i18n="treatmentSilverGloveTitle"></h3>
+                        <p data-i18n="treatmentSilverGloveDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-water"></i>
+                        <h3 data-i18n="treatmentLymphDrainageTitle"></h3>
+                        <p data-i18n="treatmentLymphDrainageDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-fire"></i>
+                        <h3 data-i18n="treatmentFireBankTitle"></h3>
+                        <p data-i18n="treatmentFireBankDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-head-side-mask"></i>
+                        <h3 data-i18n="treatmentAttentionTitle"></h3>
+                        <p data-i18n="treatmentAttentionDesc"></p>
+                    </div>
+                    <div class="treatment-card card reveal">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3 data-i18n="treatmentDeepMassageTitle"></h3>
+                        <p data-i18n="treatmentDeepMassageDesc"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rooms" class="rooms-section reveal">
+            <div class="container">
+                <h2><span data-i18n="roomsTitle">Qulay Xonalarimiz</span></h2>
+                <p class="section-description" data-i18n="roomsDescription">Qulay va shinam xonalarimizda qolib, go'zal tabiatdan bahramand bo'ling. Har bir xona dam olishingiz uchun barcha sharoitlarga ega. Bizning xonalarimizda siz toza havo, shifobaxsh muhit va tinch dam olish imkoniyatiga ega bo'lasiz. Har bir xona zamonaviy jihozlangan va sizning qulayligingiz uchun mo'ljallangan.</p>
+                <div class="rooms-grid grid">
+                    <div class="room-card card">
+                        <img src="images/Standart Xona.jpg" alt="Standart xona" loading="lazy">
+                        <h3 data-i18n="room1Title">Standart xona</h3>
+                        <p data-i18n="room1Text">Bir yoki ikki kishi uchun qulay va shinam xona. Zamonaviy jihozlangan, toza va shifobaxsh muhitda dam olish imkoniyati.</p>
+                    </div>
+                    <div class="room-card card">
+                        <img src="images/Oilaviy xona.jpg" alt="Oilaviy xona" loading="lazy">
+                        <h3 data-i18n="room2Title">Oilaviy xona</h3>
+                        <p data-i18n="room2Text">Kattaroq oilalar uchun mo'ljallangan keng va qulay xona. Oilaviy dam olish uchun barcha sharoitlar yaratilgan.</p>
+                    </div>
+                    <div class="room-card card">
+                        <img src="images/Lyuks xona.jpg" alt="Lyuks xona" loading="lazy">
+                        <h3 data-i18n="room3Title">Lyuks xona</h3>
+                        <p data-i18n="room3Text">Qo'shimcha qulayliklar va hashamatli dizayn bilan jihozlangan xona. Yuqori darajadagi dam olish va qulaylik uchun.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section bg-light reveal">
+            <div class="container">
+                <h2><span data-i18n="galleryTitle">Bizning Galereya</span></h2>
+                <p class="section-description" data-i18n="galleryDescription">Sanatoriyamizning go'zal manzaralari va qulay sharoitlari haqida tasavvurga ega bo'lish uchun fotosuratlarimizni ko'rib chiqing.</p>
+                <div class="gallery-grid grid">
+                    <div class="gallery-item"><img src="images/Sanatoriya tashqi ko'rinishi.jpg" alt="Sanatoriya tashqi ko'rinishi" loading="lazy"></div>
+                    <div class="gallery-item"><img src="images/Sanatoriya ichki.jpg" alt="Xona ichki qismi" loading="lazy"></div>
+                    <div class="gallery-item"><img src="images/Davolash xonasi.jpg" alt="Davolash xonasi" loading="lazy"></div>
+                    <div class="gallery-item"><img src="images/Tabiat.jpg" alt="Tabiat manzarasi" loading="lazy"></div>
+                    <div class="gallery-item single-center">
+                        <img src="images/oshxona.jpg" alt="Oshxona" loading="lazy">
+                    </div>
+                    <div class="gallery-item"><img src="images/uzoqdan.jpg" alt="Uzoqdan" loading="lazy"></div>
+                </div>
+            </div>
+        </section>
+               <section id="contact" class="contact-section reveal">
+            <div class="contact-row">
+                <div class="contact-info">
+                    <h3><span data-i18n="contactInfoHeading">Aloqa Ma'lumotlari</span></h3>
+                    <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="address"></span></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+998942556666" data-i18n="phone1">+998 (94) 255-66-66</a></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+998934366363" data-i18n="phone2">+998 (93) 436-63-63</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@oltinsoy.uz" data-i18n="email">info@oltinsoy.uz</a></p>
+                    <p><i class="fas fa-clock"></i> <span data-i18n="workingHours"></span></p>
+   
+                        
+                </div>
+                <div class="contact-content">
+                    <h2 data-i18n="contactFormTitle"></h2>
+                    <form id="question-form">
+                        <div class="contact-form-left">
+                            <input type="text" name="senderName" placeholder="To‘liq ism:" required data-i18n-placeholder="fullName">
+                            <input type="email" name="email" placeholder="Sizning emailingiz:" required data-i18n-placeholder="yourEmail">
+                            <input type="tel" name="phone" placeholder="Telefon raqami:" data-i18n-placeholder="phoneNumber">
+                        </div>
+                        <div class="contact-form-right">
+                            <textarea name="message" placeholder="Savolingizni yozing..." required data-i18n-placeholder="question_placeholder"></textarea>
+                            <button type="submit" data-i18n="send_question">Savol yuborish</button>
+                            <p id="question-status-message" class="form-message"></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="/" aria-label="Oltinsoy Xususiy Sanatoriyasi Bosh Sahifaga qaytish">
+                        <span>Oltinsoy <span class="logo-accent">Sanatoriyasi</span></span>
+                    </a>
+                </div>
+                <nav class="footer-nav" aria-label="Footer navigatsiyasi">
+                    <ul class="nav-menu">
+                        <li class="nav-item"><a href="#home" data-i18n="home">Bosh Sahifa</a></li>
+                        <li class="nav-item"><a href="#about" data-i18n="about">Biz Haqimizda</a></li>
+                        <li class="nav-item"><a href="#treatments" data-i18n="treatments">Davolash</a></li>
+                        <li class="nav-item"><a href="#rooms" data-i18n="rooms">Xonalar</a></li>
+                        <li class="nav-item"><a href="#gallery" data-i18n="gallery">Galereya</a></li>
+                        <li class="nav-item"><a href="#contact" data-i18n="contact">Aloqa</a></li>
+                        <li class="nav-item"><a href="admin.html">🔐 Admin Panel</a></li>
+                    </ul>
+                </nav>
+                <div class="footer-copyright">
+                    <p>© 2025 Oltinsoy Xususiy Sanatoriyasi. Barcha huquqlar himoyalangan.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="script.js" type="module"></script>
+</body>
+</html>
